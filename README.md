@@ -13,34 +13,7 @@ The HTTP API behind Stickies: notes, folders, sharing and live updates, in 1 sma
 
 ## How it fits
 
-```mermaid
-flowchart LR
-    web["stickies-web<br/>(browser)"]
-    noto["Noto<br/>(macOS app)"]
-    agents["Scripts and agents<br/>(API key)"]
-
-    subgraph api["stickies-api"]
-        auth["Auth<br/>Google sign-in, JWT, API keys"]
-        notes["/notes<br/>read, write, search"]
-        live["/live<br/>server-sent events"]
-        share["/share and /og<br/>public links, preview cards"]
-    end
-
-    google[("Google<br/>your OAuth client")]
-    db[("Postgres<br/>or Supabase")]
-
-    web --> auth
-    noto --> auth
-    agents --> auth
-    auth --> notes
-    auth --> live
-    auth -. verifies id_token .-> google
-    notes --> db
-    share --> db
-    notes -. new / updated / deleted .-> live
-    live -. pushes changes .-> web
-    live -. pushes changes .-> noto
-```
+[![How stickies-api fits: stickies-web, Noto and agents call the API, which uses Google sign-in and Postgres or Supabase](docs/screenshots/architecture.png)](https://flows-bheng.vercel.app/?id=f5fbca56-c899-42ad-8fd0-55caf6f09d8d)
 
 Every client signs in the same way: Google sign-in, then the API issues a 15-minute access token and a 60-day refresh token. Scripts use an API key instead. When any client changes a note, the rest see it instantly over `/live`.
 
