@@ -1,7 +1,7 @@
 /**
  * Folder resolution for incoming notes.
  *
- * A caller may send "Jobs", "jobs", "job-search", or a path "CLAUDE/PM2026".
+ * A caller may send "Jobs", "jobs", "job-search", or a path "CLAUDE/Work".
  * All of it resolves to one real folder row. Missing SUB-folders are created on
  * the way down; a missing ROOT is an error, because auto-creating roots is how
  * the board filled up with junk top-level folders.

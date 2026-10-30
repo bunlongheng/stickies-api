@@ -253,7 +253,7 @@ paths:
                   properties:
                     title: { type: string, description: Derived from frontmatter, a heading, or the first line when absent. }
                     content: { type: string }
-                    folder: { type: string, default: CLAUDE, description: Accepts a path like CLAUDE/PM2026. Fuzzy matched. }
+                    folder: { type: string, default: CLAUDE, description: Accepts a path like CLAUDE/Work. Fuzzy matched. }
                     color: { type: string, description: Least-used palette colour when absent. }
                     type: { type: string }
                     icon: { type: string, description: Must be a supported name, else 422 with the list. }

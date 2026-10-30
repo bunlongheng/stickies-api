@@ -11,7 +11,7 @@ export function isReservedFolderName(name?: string | null): boolean {
 }
 
 // Remap a folder path whose leading segment is a reserved view to the default home:
-// "Today" -> "CLAUDE", "Today/PM2026" -> "CLAUDE/PM2026". Used on note assignment so AI
+// "Today" -> "CLAUDE", "Today/Work" -> "CLAUDE/Work". Used on note assignment so AI
 // notes that aim at a virtual view land in the real default folder instead.
 export function remapReservedFolderPath(folderName: string, fallback = "CLAUDE"): string {
     if (!folderName) return folderName;

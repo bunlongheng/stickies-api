@@ -54,7 +54,7 @@ test("reserved view names never become folders", () => {
     for (const n of ["Today", "today", "Yesterday", "All"]) assert.equal(isReservedFolderName(n), true);
     assert.equal(isReservedFolderName("Todo"), false);
     assert.equal(remapReservedFolderPath("Today"), "CLAUDE");
-    assert.equal(remapReservedFolderPath("Today/PM2026"), "CLAUDE/PM2026");
+    assert.equal(remapReservedFolderPath("Today/Work"), "CLAUDE/Work");
     assert.equal(remapReservedFolderPath("Work/Today"), "Work/Today");
 });
 
