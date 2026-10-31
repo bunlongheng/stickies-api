@@ -13,9 +13,9 @@ The HTTP API behind Stickies: notes, folders, sharing and live updates, in 1 sma
 
 ## How it fits
 
-[![How stickies-api fits: stickies-web, Noto and agents call the API, which uses Google sign-in and Postgres or Supabase](docs/screenshots/architecture.png)](https://flows-bheng.vercel.app/?id=f5fbca56-c899-42ad-8fd0-55caf6f09d8d)
+[![How stickies-api fits: your app and your scripts call the API, which uses Google sign-in and Postgres or Supabase; stickies-web reads the same table directly](docs/screenshots/architecture.png)](https://flows-bheng.vercel.app/?id=202e3e12-f2de-429a-ada9-d0379e48ac30)
 
-Every client signs in the same way: Google sign-in, then the API issues a 15-minute access token and a 60-day refresh token. Scripts use an API key instead. When any client changes a note, the rest see it instantly over `/live`.
+Your app signs in with Google, then the API issues a 15-minute access token and a 60-day refresh token. Scripts use an API key instead. When any client changes a note, the rest see it instantly over `/live`. [stickies-web](https://github.com/bunlongheng/stickies-web) skips the API and reads the same `stickies` table straight from Postgres.
 
 ## Features
 
@@ -69,8 +69,8 @@ Optional integrations (AI, Philips Hue, GitHub backup) are listed in `.env.examp
 
 | Repo | What it is |
 |---|---|
-| [stickies-web](https://github.com/bunlongheng/stickies-web) | The web client: the whole board in the browser |
-| [noto](https://github.com/bunlongheng/noto) | A fast macOS app onto every note, in Swift |
+| [stickies-web](https://github.com/bunlongheng/stickies-web) | The web client: the whole board in the browser, reading Postgres directly |
+| [noto](https://github.com/bunlongheng/noto) | A fast macOS app onto every note, in Swift (talks to the Stickies app, not this API) |
 | [quick-stick-lite](https://github.com/bunlongheng/quick-stick-lite) | A sticky-note grid in 1 file, no build |
 
 
